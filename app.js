@@ -13,6 +13,7 @@ import { ping } from './utils/ping.js'
 import { registerUser } from './controllers/userControllers.js'
 import { login, protect } from './utils/auth.js'
 import userRouter from './routers/userRouter.js'
+import productRouter from './routers/productRouter.js'
 
 // create express server
 export const app = express()
@@ -43,9 +44,8 @@ app.post('/api/register',registerUser)
 app.post('/api/login', login)
 
 
-app.use('', protect)
 app.use('/api/users',userRouter)
-
+app.use('/api/products',productRouter)
 // app.post('/api/signup', signup)
 
 

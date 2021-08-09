@@ -48,7 +48,21 @@ export const protect = async (req, res, next) => {
     next()
   }
   
- export const admin =(req,res,next)=>{
+ export const admin =async (req,res,next)=>{
+  const bearer = req.headers.authorization || req.headers.Authorization
+    if (!bearer || !bearer.startsWith('Bearer ')) {
+      return res.unauthorized()
+    }
+    const token = bearer.split('Bearer ')[1].trim()
+  
+    const payload = verifyJWTToken(token)
+    if (!payload) {
+      return res.unauthorized()
+    }
+    const user = await User.findOne({ _id: payload.id })
+
+  
+    req.user = user
     if(req.user && req.user.isAdmin){
         next()
     }else{
