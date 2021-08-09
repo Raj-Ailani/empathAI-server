@@ -4,7 +4,7 @@ import { connect } from './config/db.js'
 
 
 const start = async () => {
-  console.log('Process Environment: ', config)
+  console.log('Process Environment:Succes ')
   try {
     await connect().then(console.log('Database Connected'))
     app.listen(config.PORT, () => {
