@@ -1,6 +1,6 @@
-import express, { Router } from 'express'
+import express, {  Router } from 'express'
 import cors from 'cors'
-
+import request  from 'request'
 // import { login, protect } from './utils/auth.js'
 import {
   created,
@@ -46,6 +46,18 @@ app.post('/api/login', login)
 
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
+
+//POC to connect node with flask server
+app.get('/home', function(req, res) {
+  request('http://127.0.0.1:5000/flask', function (error, response, body) {
+    console.error('error:', error); // Print the error
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the data received
+    res.ok(body); //Display the response on the website
+    });      
+});
+
+
 // app.post('/api/signup', signup)
 
 
