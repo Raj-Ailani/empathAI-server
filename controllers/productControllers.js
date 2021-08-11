@@ -53,8 +53,6 @@ export const getProductById = async (req, res) => {
 
 // Comments CURD operations ..................
 
-
-
 export const postComment = async (req, res) => {
     try {
       var config = {
