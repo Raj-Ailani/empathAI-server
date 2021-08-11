@@ -31,6 +31,10 @@ const commentSchema = new mongoose.Schema(
         type:Number,
         required:true,
     },
+    sentiment:{
+        type:Boolean,
+        required:true,
+    },
     },
     { timestamps: true }
   )

@@ -1,5 +1,5 @@
 import { Comments, Products } from "../models/productModel.js"
-
+import axios from "axios"
 
 export const createProduct = async (req, res) => {
         try {
@@ -57,7 +57,18 @@ export const getProductById = async (req, res) => {
 
 export const postComment = async (req, res) => {
     try {
-     const comment = await Comments.create({...req.body})   
+      var config = {
+        headers: {
+            'Content-Length': 0,
+            'Content-Type': 'text/plain'
+        }
+    };
+    const body = req.body
+ 
+    const flask = await axios.post('http://127.0.0.1:5000/sentiment',body.comment, config)
+    body.sentiment = flask.data
+ 
+    const comment = await Comments.create({...body})   
       res.ok(comment)
     } catch (error) {
       console.log('Error', error)
