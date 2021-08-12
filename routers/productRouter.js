@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { createProduct, getAllProducts, getCommentsOfProduct, getProductById, postComment, updateProduct } from '../controllers/productControllers.js'
-import { admin } from '../utils/auth.js'
+import { admin, protect } from '../utils/auth.js'
 
 import {
   created,
@@ -19,7 +19,7 @@ router.get('/:id',getProductById)
 router.get('/',getAllProducts)
 
 //Comments Router .....
-router.post('/comment',postComment)
+router.post('/comment',protect,postComment)
 router.get('/comment/:id',getCommentsOfProduct)
 
 

@@ -22,6 +22,12 @@ const commentSchema = new mongoose.Schema(
         ref: 'products',
         required: true
       },
+      
+    user: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: 'user',
+          required: true
+        },
      comment:{
         type:String,
         required:true,
