@@ -7,6 +7,11 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 app = Flask(__name__)
 
+@app.route('/')
+def server():
+    
+    return ('Inside Flask server')
+
 
 @app.route('/sentiment', methods=['POST'])
 def hello_world():
