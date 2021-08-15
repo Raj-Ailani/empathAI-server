@@ -63,7 +63,7 @@ export const postComment = async (req, res) => {
     };
     const body = req.body
  
-    const flask = await axios.post('http://127.0.0.1:5000/sentiment',body.comment, config)
+    const flask = await axios.post('https://sentiment-analysis.rajailani.tech/sentiment',body.comment, config)
     body.sentiment = flask.data
     body.user = req.user.id
     
