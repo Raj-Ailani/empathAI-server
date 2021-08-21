@@ -78,7 +78,9 @@ export const postComment = async (req, res) => {
 export const getCommentsOfProduct = async (req, res) => {
     try {
     const productId = req.params.id
-     const comment = await Comments.find({product:productId})   
+     const comment = await Comments.find({product:productId})
+     .populate('user','name')
+
       res.ok(comment)
     } catch (error) {
       console.log('Error', error)
