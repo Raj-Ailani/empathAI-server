@@ -12,7 +12,15 @@ const productSchema = mongoose.Schema({
     image:{
       type:String,
       required:true,
-    }
+    },
+    avgPrice:{
+      type:Number,
+      required:true,
+    },
+    details:[{
+      title:String,
+      desp:String
+    }]
 
 },{
     timestamps: true
