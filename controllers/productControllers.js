@@ -80,7 +80,7 @@ export const getCommentsOfProduct = async (req, res) => {
     const productId = req.params.id
      const comment = await Comments.find({product:productId})
      .populate('user','name')
-
+      .sort({createdAt:-1})
       res.ok(comment)
     } catch (error) {
       console.log('Error', error)
