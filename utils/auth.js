@@ -18,8 +18,8 @@ export const login = async (req, res) => {
   
       const token = await generateJWTToken({
         id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName
+        name: user.name,
+       
       })
   
       res.ok({ token: token, message: 'Logged In' })
