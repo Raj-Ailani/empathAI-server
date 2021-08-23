@@ -19,7 +19,7 @@ export const login = async (req, res) => {
       const token = await generateJWTToken({
         id: user._id,
         name: user.name,
-       
+        isAdmin : user.isAdmin
       })
   
       res.ok({ token: token, message: 'Logged In' })
