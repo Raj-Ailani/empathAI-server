@@ -19,7 +19,7 @@ router.get('/:id',getProductById)
 router.get('/',getAllProducts)
 
 //Comments Router .....
-router.post('/comment',protect,postComment)
+router.post('/comment',postComment)
 router.get('/comment/:id',getCommentsOfProduct)
 
 

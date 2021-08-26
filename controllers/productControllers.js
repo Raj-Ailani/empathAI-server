@@ -65,7 +65,6 @@ export const postComment = async (req, res) => {
  
     const flask = await axios.post('https://sentiment-analysis.rajailani.tech/sentiment',body.comment, config)
     body.sentiment = flask.data
-    body.user = req.user.id
     
      const comment = await Comments.create({...body})   
       res.ok(comment)

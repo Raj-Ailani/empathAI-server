@@ -36,10 +36,9 @@ const commentSchema = new mongoose.Schema(
         required: true
       },
       
-    user: {
-          type: mongoose.SchemaTypes.ObjectId,
-          ref: 'user',
-          required: true
+    name: {
+      type:String,
+      required:true,
         },
      comment:{
         type:String,
