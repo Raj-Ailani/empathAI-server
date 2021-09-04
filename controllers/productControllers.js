@@ -1,6 +1,6 @@
 import { Comments, Products } from "../models/productModel.js"
 import axios from "axios"
-
+import moment from 'moment'
 export const createProduct = async (req, res) => {
         try {
          const product = await Products.create({ ...req.body })
@@ -115,6 +115,41 @@ export const getProductReport = async (req, res) => {
   response.positiveComment = positiveComment
   response.negativeComment = negativeComment
 
+    res.ok(response)
+  } catch (error) {
+    console.log('Error', error)
+    res.senderror(error)
+  }
+}
+
+export const getNumberOfCommentByDate = async (req, res) => {
+  try {
+  let response = []
+  let allDates = []
+  const productId = req.params.id
+  const comments = await Comments.find({product:productId}).sort({createdAt:1})
+
+  const oldestDate = comments[0].createdAt  
+  const latestDate = new Date()
+  
+  for (var i=0; oldestDate <= latestDate; oldestDate.setDate(oldestDate.getDate() + 1), i++) {
+    allDates.push(new Date(oldestDate));
+    }
+  
+   await Promise.all(allDates.map(async (date) =>{
+  
+   let arr =[]
+    const today = moment(date).startOf('day')
+    const arrayDate = date.getDate() + '-' +date.getMonth()+'-' + date.getFullYear()  
+   const dateComment = await Comments.find({product:productId,createdAt:{
+    $gte: today.toDate(),
+    $lte: moment(today).endOf('day').toDate()
+  }}).countDocuments()
+  arr.push(arrayDate)
+  arr.push(dateComment)
+  console.log(arr)
+  response.push(arr)
+  }))
     res.ok(response)
   } catch (error) {
     console.log('Error', error)
