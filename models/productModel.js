@@ -46,8 +46,7 @@ const commentSchema = new mongoose.Schema(
     },
 
     stars:{
-        type:Number,
-        required:true,
+        type:Number
     },
     sentiment:{
         type:Boolean,
