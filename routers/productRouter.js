@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { createProduct, getAllProducts, getCommentsOfProduct, getProductById, postComment, updateProduct } from '../controllers/productControllers.js'
+import { createProduct, getAllProducts, getCommentsOfProduct, getProductById, getProductReport, postComment, updateProduct } from '../controllers/productControllers.js'
 import { admin, protect } from '../utils/auth.js'
 
 import {
@@ -21,6 +21,10 @@ router.get('/',getAllProducts)
 //Comments Router .....
 router.post('/comment',postComment)
 router.get('/comment/:id',getCommentsOfProduct)
+
+//Report 
+router.get('/report/:id',getProductReport)
+
 
 
 export default router

@@ -86,3 +86,38 @@ export const getCommentsOfProduct = async (req, res) => {
       res.senderror(error)
     }
 }
+
+export const getProductReport = async (req, res) => {
+  try {
+  let response = {}
+   let positiveComment = []
+   let negativeComment = []
+
+    const productId = req.params.id
+   const comment = await Comments.find({product:productId})
+   const commentCount = await Comments.find({product:productId}).count()
+
+  comment.map(c =>{
+    if(c.sentiment){
+      positiveComment.push(c)
+    }
+    else{
+      negativeComment.push(c)
+    }
+  })
+  const positiveCount = positiveComment.length
+  const negativeCount = negativeComment.length
+
+  response.positiveCount = positiveCount
+  response.negativeCount = negativeCount
+
+  response.totalCount = commentCount
+  response.positiveComment = positiveComment
+  response.negativeComment = negativeComment
+
+    res.ok(response)
+  } catch (error) {
+    console.log('Error', error)
+    res.senderror(error)
+  }
+}
