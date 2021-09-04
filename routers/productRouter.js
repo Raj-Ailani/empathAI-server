@@ -23,7 +23,7 @@ router.post('/comment',postComment)
 router.get('/comment/:id',getCommentsOfProduct)
 
 //Report 
-router.get('/report/:id',getProductReport)
+router.get('/report/:id',admin,getProductReport)
 
 
 
