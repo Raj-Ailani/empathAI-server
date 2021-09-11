@@ -11,7 +11,6 @@ const productSchema = mongoose.Schema({
     },
     image:{
       type:String,
-      required:true,
     },
     avgPrice:{
       type:Number,
