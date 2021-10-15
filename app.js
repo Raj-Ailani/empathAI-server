@@ -18,8 +18,6 @@ import productRouter from './routers/productRouter.js'
 // create express server
 export const app = express()
 
-
-
 app.use(cors())
 app.use(express.json());
 
