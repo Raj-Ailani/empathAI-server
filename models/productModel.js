@@ -15,11 +15,7 @@ const productSchema = mongoose.Schema({
     avgPrice:{
       type:Number,
       required:true,
-    },
-    details:[{
-      title:String,
-      desp:String
-    }]
+    }
 
 },{
     timestamps: true
