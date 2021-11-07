@@ -29,7 +29,7 @@ export const updateProduct = async (req, res) => {
 export const getAllProducts = async (req, res) => {
     try {
      
-     const product = await Products.find({})
+     const product = await Products.find({isDeleted:false})
         
       res.ok(product)
     } catch (error) {

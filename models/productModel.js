@@ -15,6 +15,11 @@ const productSchema = mongoose.Schema({
     avgPrice:{
       type:Number,
       required:true,
+    },
+    isDeleted:{
+      type:Boolean,
+      required:true,
+      default:false
     }
 
 },{
