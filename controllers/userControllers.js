@@ -9,7 +9,7 @@ import asynHandler from 'express-async-handler'
 export const registerUser = async (req, res) => {
         try {
           // TODO: add validation and deconstruct
-          await User.create({ ...req.body })
+          await User.create({ name: req.body.name, email: req.body.email, password: req.body.password })
       
           res.ok('User Registered')
         } catch (error) {
